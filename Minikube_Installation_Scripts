@@ -1,0 +1,60 @@
+
+######################################################### 
+         Kubernetes 
+######################################################### 
+ 
+
+-----*** Installing minikube ***----- 
+
+$ sudo apt update
+
+$ mkdir minikube
+
+$ cd minikube
+
+$ sudo apt install -y curl wget apt-transport-https
+
+$ sudo apt install -y docker.io
+
+$ sudo systemctl enable --now docker
+
+$ sudo usermod -aG docker $USER && newgrp docker
+
+$ sudo curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+$ ls
+
+$ sudo chmod +x minikube
+
+$ sudo mv minikube /usr/local/bin/
+
+$ minikube version
+
+$ sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+$ chmod +x kubectl
+
+$ sudo mv kubectl /usr/local/bin/
+
+$ minikube start --driver=docker --vm=true 
+
+$ kubectl get nodes
+
+$ kubectl get nodes --context kind-tws-cluster
+
+>> That's it! You've successfully installed Minikube on Ubuntu, and you can now start deploying Kubernetes applications for development and testing <<
+
+
+> When you are done, you can stop the Minikube cluster with <<
+
+$ minikube stop
+
+$ minikube delete
+
+
+
+>>how to change context default<<
+
+ $ kubectl config use-context <kind-tws-cluster>
+
+
